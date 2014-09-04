@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+      <title>Recent Content on Joshua Milas </title>
+      <generator uri="https://hugo.spf13.com">Hugo</generator>
+    <link>http://localhost:1313/index.xml/</link>
+    <language>en-us</language>
+    
+    
+    <updated>Wed, 03 Sep 2014 12:01:17 EDT</updated>
+    
+    <item>
+      <title>first</title>
+      <link>http://localhost:1313/post/first/</link>
+      <pubDate>Wed, 03 Sep 2014 12:01:17 EDT</pubDate>
+      
+      <guid>http://localhost:1313/post/first/</guid>
+      <description>&lt;p&gt;##Test 1&lt;/p&gt;
+
+&lt;p&gt;This is some text in the post&lt;/p&gt;
+
+&lt;p&gt;Do stuff
+Do more stuff&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>about</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Wed, 03 Sep 2014 12:00:33 EDT</pubDate>
+      
+      <guid>http://localhost:1313/about/</guid>
+      <description>
+
+&lt;h2 id=&#34;toc_0&#34;&gt;A headline&lt;/h2&gt;
+
+&lt;p&gt;Some text!&lt;/p&gt;
+
+&lt;p&gt;Does this work?&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

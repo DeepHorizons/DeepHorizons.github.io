@@ -1,0 +1,14 @@
+baseurl = "DeepHorizons.github.io"
+languageCode = "en-us"
+title = "Joshua Milas"
+theme = "vienna"
+
+[params]
+    # Social accounts. Link to these accounts are displayed in the header and
+    # footer.
+    github = "DeepHorizons"
+    linkedin = "joshuamilas"
+	mathjax = true
+
+[permalinks]
+      post = "/:year/:month/:day/:title/"

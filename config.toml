@@ -1,4 +1,4 @@
-baseurl = "DeepHorizons.github.io"
+baseurl = "https://DeepHorizons.github.io/"
 languageCode = "en-us"
 title = "Joshua Milas"
 theme = "vienna"

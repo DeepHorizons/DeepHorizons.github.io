@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" Introduction to the ARM interpreter &middot;  Joshua Milas" />
+  
+  <meta property="og:site_name" content="Joshua Milas" />
+  <meta property="og:url" content="https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2016-06-06T22:50:29-04:00" />
+  
+  <meta property="og:article:tag" content="jupyter" />
+  
+  <meta property="og:article:tag" content="arm" />
+  
+  
+
+  <title>
+     Introduction to the ARM interpreter &middot;  Joshua Milas
+  </title>
+
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://deephorizons.github.io/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://deephorizons.github.io/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://deephorizons.github.io/">Joshua Milas</a></h1>
+      
+      <div class="sns-links hidden-print">
+  <a style="width: 75px;" href="https://deephorizons.github.io/about">About</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://github.com/DeepHorizons" target="_blank">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+  <a href="https://linkedin.com/in/joshuamilas" target="_blank">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+</div>
+
+      
+      <a href="https://deephorizons.github.io/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">Introduction to the ARM interpreter</h1>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-06-06T22:50:29-04:00">
+          Jun 6, 2016
+        </time>
+      </div>
+      <div class="pull-right">
+        
+        <span class="post-tag small"><a href="https://deephorizons.github.io//tags/jupyter">#jupyter</a></span>
+        
+        <span class="post-tag small"><a href="https://deephorizons.github.io//tags/arm">#arm</a></span>
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    
+
+<p>Earlier this year I learned about <a href="https://jupyter.org">Jupyter</a>,
+a web based &lsquo;notebook&rsquo; editor that allows for both documentation and code.
+It seemed like a neat idea, but I just glazed over it.
+It wasn&rsquo;t until I read
+<a href="https://developer.rackspace.com/blog/deploying-jupyterhub-for-education/">Jessica Hamrick&rsquo;s post on rackspace</a>
+that I began to see the potential for such a tool.</p>
+
+<h1 id="background:fd1b137c8bb4656a20b3b51b9888debb">Background</h1>
+
+<p>I never liked doing programing on paper.
+There is a certain benefit in being able to work out a problem without your
+favorite editor,
+but in the academic setting it&rsquo;s less of programming and more of
+&lsquo;can you express this idea in a very specific way?&rsquo;.
+I always slogged through programing assignments that needed to be handed in,
+just to be told that I missed a semi-colon
+or that my curly brackets aren&rsquo;t right.
+There have been attempts made at my school to allow students to submit code
+over the internet but the tool is either super particular to the output
+of your submitted program, or you simply zip up the code and hope the grader
+has a similar environment to you.</p>
+
+<h2 id="jupyter-in-the-classroom:fd1b137c8bb4656a20b3b51b9888debb">Jupyter in the classroom</h2>
+
+<p>Thats where Jupyter comes in.
+Notebooks are supposed to be portable, made to be shared among people.
+<a href="https://github.com/jupyterhub/jupyterhub">JupyterHub</a>
+allows Jupyter to be run on a central server,
+giving everyone access to the same environment.
+You are guaranteed that if it runs for you, it will run for everyone else too.
+There is also <a href="https://github.com/jupyter/nbgrader">nbgrader</a>,
+which allows teachers to create assignments, distribute them to students,
+and collect them.
+It also has autograding features, but unlike the other tools the students
+have access to the tests.</p>
+
+<p>To test my theory on its benefits of it in the academic environment,
+I worked with a teacher and attempted to do every
+assignment in the class in Jupyter.
+I requested a server from our department,
+Installed Jupyter and the appropriate software and away I went.
+It was a Digial Signal Processing class with assignments and projects.
+The assignment and projects were done in MATLAB,
+with a few problems from the book.
+It just so happened that there is a
+<a href="https://github.com/calysto/matlab_kernel">MATLAB kernel</a> for Jupyter.
+I didn&rsquo;t really want to deal with licensing,
+so I rewrote the assignment to work with
+<a href="https://www.gnu.org/software/octave/">Octave</a>,
+an open source alternative to MATLAB.
+There also happened to be an
+<a href="https://github.com/calysto/octave_kernel">Octave kernel</a> which is what I used.</p>
+
+<h2 id="results:fd1b137c8bb4656a20b3b51b9888debb">Results</h2>
+
+<p>The test was mostly successful with some hidden benefits.
+Out of the two assignments, I did the first 100% in Jupyter.
+The second could have been done in Jupyter,
+but would involve downloading many file transfers and playing audio,
+something that Jupyter isn&rsquo;t good at yet.
+All but one assignment was done in Jupyter.
+The one that wasn&rsquo;t needed a specific MATLAB tool
+that is not available in Octave.
+Homework was practical until graphs and charts were needed.</p>
+
+<p>One extra benefit I looked over was the ability to download the assignment
+in a $ \LaTeX $ style formatted PDF.
+This is particularly useful for classes that wont be using Jupyter
+to do assignments, but students still want to use it.</p>
+
+  </section>
+  <footer>
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://deephorizons.github.io/2016/02/20/building-kaldi-on-windows-part-1/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next disabled"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  <a style="width: 75px;" href="https://deephorizons.github.io/about">About</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://github.com/DeepHorizons" target="_blank">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+  <a href="https://linkedin.com/in/joshuamilas" target="_blank">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://deephorizons.github.io/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+  
+  
+  <script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+		tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		  processEscapes: true
+		}
+	  });
+  </script>
+  
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  
+</body>
+</html>
+

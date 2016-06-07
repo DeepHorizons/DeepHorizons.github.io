@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jupyter on Joshua Milas</title>
+    <link>https://DeepHorizons.github.io/tags/jupyter/</link>
+    <description>Recent content in Jupyter on Joshua Milas</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 06 Jun 2016 22:50:29 -0400</lastBuildDate>
+    <atom:link href="https://DeepHorizons.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Introduction to the ARM interpreter</title>
+      <link>https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/</link>
+      <pubDate>Mon, 06 Jun 2016 22:50:29 -0400</pubDate>
+      
+      <guid>https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/</guid>
+      <description>
+
+&lt;p&gt;Earlier this year I learned about &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter&lt;/a&gt;,
+a web based &amp;lsquo;notebook&amp;rsquo; editor that allows for both documentation and code.
+It seemed like a neat idea, but I just glazed over it.
+It wasn&amp;rsquo;t until I read
+&lt;a href=&#34;https://developer.rackspace.com/blog/deploying-jupyterhub-for-education/&#34;&gt;Jessica Hamrick&amp;rsquo;s post on rackspace&lt;/a&gt;
+that I began to see the potential for such a tool.&lt;/p&gt;
+
+&lt;h1 id=&#34;background:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Background&lt;/h1&gt;
+
+&lt;p&gt;I never liked doing programing on paper.
+There is a certain benefit in being able to work out a problem without your
+favorite editor,
+but in the academic setting it&amp;rsquo;s less of programming and more of
+&amp;lsquo;can you express this idea in a very specific way?&amp;rsquo;.
+I always slogged through programing assignments that needed to be handed in,
+just to be told that I missed a semi-colon
+or that my curly brackets aren&amp;rsquo;t right.
+There have been attempts made at my school to allow students to submit code
+over the internet but the tool is either super particular to the output
+of your submitted program, or you simply zip up the code and hope the grader
+has a similar environment to you.&lt;/p&gt;
+
+&lt;h2 id=&#34;jupyter-in-the-classroom:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Jupyter in the classroom&lt;/h2&gt;
+
+&lt;p&gt;Thats where Jupyter comes in.
+Notebooks are supposed to be portable, made to be shared among people.
+&lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34;&gt;JupyterHub&lt;/a&gt;
+allows Jupyter to be run on a central server,
+giving everyone access to the same environment.
+You are guaranteed that if it runs for you, it will run for everyone else too.
+There is also &lt;a href=&#34;https://github.com/jupyter/nbgrader&#34;&gt;nbgrader&lt;/a&gt;,
+which allows teachers to create assignments, distribute them to students,
+and collect them.
+It also has autograding features, but unlike the other tools the students
+have access to the tests.&lt;/p&gt;
+
+&lt;p&gt;To test my theory on its benefits of it in the academic environment,
+I worked with a teacher and attempted to do every
+assignment in the class in Jupyter.
+I requested a server from our department,
+Installed Jupyter and the appropriate software and away I went.
+It was a Digial Signal Processing class with assignments and projects.
+The assignment and projects were done in MATLAB,
+with a few problems from the book.
+It just so happened that there is a
+&lt;a href=&#34;https://github.com/calysto/matlab_kernel&#34;&gt;MATLAB kernel&lt;/a&gt; for Jupyter.
+I didn&amp;rsquo;t really want to deal with licensing,
+so I rewrote the assignment to work with
+&lt;a href=&#34;https://www.gnu.org/software/octave/&#34;&gt;Octave&lt;/a&gt;,
+an open source alternative to MATLAB.
+There also happened to be an
+&lt;a href=&#34;https://github.com/calysto/octave_kernel&#34;&gt;Octave kernel&lt;/a&gt; which is what I used.&lt;/p&gt;
+
+&lt;h2 id=&#34;results:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Results&lt;/h2&gt;
+
+&lt;p&gt;The test was mostly successful with some hidden benefits.
+Out of the two assignments, I did the first 100% in Jupyter.
+The second could have been done in Jupyter,
+but would involve downloading many file transfers and playing audio,
+something that Jupyter isn&amp;rsquo;t good at yet.
+All but one assignment was done in Jupyter.
+The one that wasn&amp;rsquo;t needed a specific MATLAB tool
+that is not available in Octave.
+Homework was practical until graphs and charts were needed.&lt;/p&gt;
+
+&lt;p&gt;One extra benefit I looked over was the ability to download the assignment
+in a $ \LaTeX $ style formatted PDF.
+This is particularly useful for classes that wont be using Jupyter
+to do assignments, but students still want to use it.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,42 +1,208 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>Recent Content on Joshua Milas </title>
-      <generator uri="https://hugo.spf13.com">Hugo</generator>
-    <link>http://localhost:1313/index.xml/</link>
+    <title>Joshua Milas</title>
+    <link>DeepHorizons.github.io/</link>
+    <description>Recent content on Joshua Milas</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    
-    
-    <updated>Wed, 03 Sep 2014 12:01:17 EDT</updated>
+    <lastBuildDate>Sat, 20 Feb 2016 10:35:39 -0500</lastBuildDate>
+    <atom:link href="DeepHorizons.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>first</title>
-      <link>http://localhost:1313/post/first/</link>
-      <pubDate>Wed, 03 Sep 2014 12:01:17 EDT</pubDate>
+      <title>Building Kaldi on Windows: Part 1</title>
+      <link>/DeepHorizons.github.io/2016/02/20/building-kaldi-on-windows-part-1/</link>
+      <pubDate>Sat, 20 Feb 2016 10:35:39 -0500</pubDate>
       
-      <guid>http://localhost:1313/post/first/</guid>
-      <description>&lt;p&gt;##Test 1&lt;/p&gt;
+      <guid>/DeepHorizons.github.io/2016/02/20/building-kaldi-on-windows-part-1/</guid>
+      <description>
 
-&lt;p&gt;This is some text in the post&lt;/p&gt;
+&lt;p&gt;This is a multi part series about building Kaldi on Windows with Microsoft Visual Studio 2015&lt;/p&gt;
 
-&lt;p&gt;Do stuff
-Do more stuff&lt;/p&gt;
+&lt;h1 id=&#34;speech-recognition:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Speech Recognition&lt;/h1&gt;
+
+&lt;p&gt;Like others, I have always been interested in adding speech recognition to my projects.
+When I first heard about &lt;a href=&#34;http://cmusphinx.sourceforge.net/&#34;&gt;CMU Sphinx&lt;/a&gt;
+or &lt;a href=&#34;http://julius.osdn.jp/en_index.php&#34;&gt;Julius&lt;/a&gt;
+I quickly jumped to learn them and integrate them into my project.
+It mostly lead to a fruitless result, mostly because I was young and ignorant,
+but partly because the tools were just not the most accurate.&lt;/p&gt;
+
+&lt;p&gt;My last attempt was to build a bot for a Mumble server,
+sitting in the lounge listening for keywords so that it could report back
+some useful information.
+For example, if you asked it &amp;ldquo;Whats the weather like?&amp;rdquo;
+It would respond with
+&amp;ldquo;The current weather is partly cloudy with a temperature of 56 degrees&amp;rdquo;.
+When I started I tried to use Julius, but this was fruitless for reasons which I cannot remember.
+The next attempt was to use Sphinx.
+This proved to be more useful, there was already &lt;a href=&#34;https://github.com/cmusphinx/pocketsphinx-python&#34;&gt;a python library&lt;/a&gt;
+And they provide &lt;a href=&#34;https://sourceforge.net/projects/cmusphinx/files/Acoustic%20and%20Language%20Models/US%20English%20Generic%20Acoustic%20Model/&#34;&gt;models&lt;/a&gt;
+So that you can just hit the ground running.&lt;/p&gt;
+
+&lt;p&gt;After tinkering around, fixing bugs, and figuring out how to get it all set up,
+it did in fact work.
+The problem?
+It couldn&amp;rsquo;t get my speech correct.
+It would get a close approximate, but never enough to determined what I said.
+The solution to this was to use a keyword file,
+A list of phrases and a probability level to limit what Sphinx would recognize
+(called Out-of-Grammar rejection).
+This was fine for a small project with a limited domain of possible inputs,
+like days of the week or specific phrases for certain actions,
+but this would never be suitable for anything larger.&lt;/p&gt;
+
+&lt;h1 id=&#34;kaldi:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Kaldi&lt;/h1&gt;
+
+&lt;p&gt;And thats when I heard about &lt;a href=&#34;http://kaldi-asr.org/&#34;&gt;Kaldi&lt;/a&gt;.
+Kaldi is the &amp;lsquo;Next Gen&amp;rsquo; of speech recognition.
+Developed in 2011 as a research project, it uses current modern technology and algorithms
+to achieve speech recognition that&amp;rsquo;s leaps and bounds better than the current alternatives.
+Kaldi is also designed to be loosely coupled,
+making it easy to switch in newer technology or algorithms as they become available
+(&lt;a href=&#34;http://kaldi-asr.org/doc/online_programs.html&#34;&gt;which has already happened&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;So why hasn&amp;rsquo;t everyone switched over to Kaldi?
+Because it nearly requires a PHD to use it.
+It is very much still a research project,
+and the &lt;a href=&#34;http://kaldi-asr.org/doc/&#34;&gt;documentation&lt;/a&gt; isnt quite up to par for the average person.
+There are efforts to revise the documentation to enable ease of use,
+but it is still far from being done.&lt;/p&gt;
+
+&lt;p&gt;Luckly a lot of the heavy lifting has been done.
+Tanel Alum has made a gstreamer plugin that takes audio from an input file and pipes it into kaldi.
+It is not yet in the kaldi source, and therefor must be compiled separetely.
+He has already made a server that accepts websocket requests.
+If you just want to use that, you get get it
+&lt;a href=&#34;https://github.com/alumae/kaldi-gstreamer-server&#34;&gt;here&lt;/a&gt;,
+or get it as a docker container
+&lt;a href=&#34;https://github.com/jcsilva/docker-kaldi-gstreamer-server&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&#34;why-compile-on-windows:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Why compile on Windows?&lt;/h1&gt;
+
+&lt;p&gt;Because thats what I use for my everyday development.&lt;/p&gt;
+
+&lt;h2 id=&#34;prereqs:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Prereqs&lt;/h2&gt;
+
+&lt;p&gt;I used:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows 7 x64&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx&#34;&gt;Microsoft Visual Studio Community 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://git-scm.com/download/win&#34;&gt;git&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;perl&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You will also need to apply patches.
+I use &lt;a href=&#34;https://msys2.github.io/&#34;&gt;MSYS2&lt;/a&gt;, but it is not required.
+Look up &lt;a href=&#34;http://gnuwin32.sourceforge.net/packages/patch.htm&#34;&gt;Patch for Windows&lt;/a&gt;.
+In the examples I use &lt;code&gt;wget&lt;/code&gt; and other command line tools,
+but you can do the actions manually.&lt;/p&gt;
+
+&lt;p&gt;Kaldi had some instructions for building on windows located &lt;a href=&#34;https://github.com/kaldi-asr/kaldi/blob/master/windows/INSTALL.md&#34;&gt;In the windows folder&lt;/a&gt;
+from which much of this is derived.
+Read that for the most up to date install steps.&lt;/p&gt;
+
+&lt;p&gt;It is good to note here that we will be building a 64 bit version of Kaldi
+and of all the tools.
+You may try for the 32 bit version, but you will have to pick the correct download
+for the tools (namely OpenBlas, Win32-int32).
+I have not tried this, so YMMV.&lt;/p&gt;
+
+&lt;h2 id=&#34;getting-the-stuff:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Getting the stuff&lt;/h2&gt;
+
+&lt;p&gt;The first step is to clone the repo&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/kaldi-asr/kaldi.git kaldi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;cd into the tools directory and checkout the windows version of
+&lt;a href=&#34;http://openfst.org&#34;&gt;OpenFst&lt;/a&gt;.
+Kaldi &lt;em&gt;can&lt;/em&gt; be compile with 1.4.x, but it doesn&amp;rsquo;t seem to work on windows.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd kaldi/tools
+git clone https://github.com/jtrmal/openfstwin-1.3.4.git openfst
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You need to get pthread-win32 as well.
+Download
+&lt;a href=&#34;http://downloads.sourceforge.net/project/pthreads4w/pthreads-w32-2-9-1-release.zip&#34;&gt;http://downloads.sourceforge.net/project/pthreads4w/pthreads-w32-2-9-1-release.zip&lt;/a&gt;
+and unzip it into a folder named &lt;code&gt;pthreads&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;wget http://downloads.sourceforge.net/project/pthreads4w/pthreads-w32-2-9-1-release.zip
+mkdir pthreads
+cd pthreads
+unzip ../pthreads-w32-2-9-1-release.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Lastly, you need a BLAS package.
+I recommend OpenBlas as it is free,
+but Kaldi supports MLK as well.
+If you do use OpenBlas, you need the minwg dll as well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ..
+wget http://sourceforge.net/projects/openblas/files/v0.2.14/OpenBLAS-v0.2.14-Win64-int32.zip
+wget http://sourceforge.net/projects/openblas/files/v0.2.14/mingw64_dll.zip
+unzip OpenBLAS-v0.2.14-Win64-int32.zip
+unzip mingw64_dll.zip
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;patches:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Patches&lt;/h2&gt;
+
+&lt;p&gt;Patches need to be applied to OpenFst and pthreads&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd openfst
+patch -p1 &amp;lt; ../extras/openfstwin-1.3.4.patch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;pthreads need a patch because of MSVS 2015 will throw an error if &lt;code&gt;timespec&lt;/code&gt; is redefined.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;cd ../pthreads
+patch -p1 &amp;lt; ../extras/pthread-2.9.1.patch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;building:008c93024a31de39f86ab9e8c9e70af4&#34;&gt;Building&lt;/h2&gt;
+
+&lt;p&gt;First step is to build OpenFst.
+Open the solution in the latest MSVCnn folder and compile it under &lt;code&gt;Release&lt;/code&gt; and &lt;code&gt;x64&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;After it has successfully compiled, we need to modify the &lt;code&gt;variable.props&lt;/code&gt; file
+under &lt;code&gt;kaldi/windows&lt;/code&gt;.
+Modify the &lt;code&gt;OPENBLAS&lt;/code&gt;, &lt;code&gt;PTHREADW&lt;/code&gt;, &lt;code&gt;OPENFST&lt;/code&gt;, and &lt;code&gt;OPENFSTLIB&lt;/code&gt; values.
+Use the absolute path and make sure to keep the folder the same.
+Use the current values as a reference.&lt;/p&gt;
+
+&lt;p&gt;You also need to delete the &lt;code&gt;kaldiwin.props&lt;/code&gt; file and reaname &lt;code&gt;kaldiwin_openblas.props&lt;/code&gt;
+to &lt;code&gt;kaldiwin.props&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The Kaldi solution is ready to be built.
+Use the perl script &lt;code&gt;generate_solution.pl&lt;/code&gt; with the appropriate arguments.
+We will be using &lt;code&gt;--enable-openblas&lt;/code&gt; and &lt;code&gt;vs2015&lt;/code&gt; as the version&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;perl generate_solution.pl --vsver vs2015 --enable-openblas
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This will create a folder named &lt;code&gt;kaldiwin_vs2015_OPENBLAS&lt;/code&gt;
+in the root of the kaldi directory.
+Open the solution file in it and change the project to &lt;code&gt;Release&lt;/code&gt; and &lt;code&gt;x64&lt;/code&gt;.
+Then simply go to &lt;code&gt;Build &amp;gt; Build Solution&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;At this point, the build is going to take a while.
+Go make a bowl of popcorn and watch a movie.
+And if everything went alright, you&amp;rsquo;ll have a fully working compiled version
+of Kaldi.
+A few projects will have failed, in particular the &lt;code&gt;online&lt;/code&gt; projects.
+These projects rely on &lt;a href=&#34;http://www.portaudio.com/&#34;&gt;PortAudio&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>about</title>
-      <link>http://localhost:1313/about/</link>
-      <pubDate>Wed, 03 Sep 2014 12:00:33 EDT</pubDate>
+      <link>/DeepHorizons.github.io/about/</link>
+      <pubDate>Sat, 20 Feb 2016 10:35:26 -0500</pubDate>
       
-      <guid>http://localhost:1313/about/</guid>
-      <description>
-
-&lt;h2 id=&#34;toc_0&#34;&gt;A headline&lt;/h2&gt;
-
-&lt;p&gt;Some text!&lt;/p&gt;
-
-&lt;p&gt;Does this work?&lt;/p&gt;
+      <guid>/DeepHorizons.github.io/about/</guid>
+      <description>&lt;p&gt;This is about me!&lt;/p&gt;
 </description>
     </item>
     

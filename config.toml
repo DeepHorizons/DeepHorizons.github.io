@@ -9,6 +9,7 @@ theme = "vienna"
     github = "DeepHorizons"
     linkedin = "joshuamilas"
 	mathjax = true
+	mathjax_inline_equations = true
 
 [permalinks]
       post = "/:year/:month/:day/:title/"

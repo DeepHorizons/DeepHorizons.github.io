@@ -1,0 +1,6 @@
+#!/bin/sh
+hugo -d public/DeepHorizons.github.io
+cd public/DeepHorizons.github.io
+git add .
+git commit -m "Auto generated commit"
+git push origin master

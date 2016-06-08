@@ -1,11 +1,14 @@
 +++
 date = "2016-02-20T10:35:39-05:00"
-draft = true
+draft = false
 title = "Building Kaldi on Windows: Part 1"
 
 +++
 This is a multi part series about building Kaldi on Windows with Microsoft Visual Studio 2015
 
+UPDATE:
+I have submitted pull requests to update the build process for MSVS2015
+and it is now in the `master` branch.
 
 # Speech Recognition
 Like others, I have always been interested in adding speech recognition to my projects.
@@ -182,3 +185,13 @@ And if everything went alright, you'll have a fully working compiled version
 of Kaldi.
 A few projects will have failed, in particular the `online` projects.
 These projects rely on [PortAudio](http://www.portaudio.com/)
+
+At this point, you should have all of the binaries for Kaldi.
+As you might see, Kaldi is not just one binary, but a collection.
+The `egs` folder contains 'recipes', or collections of scripts use to train
+and test those models.
+Look at those to get an idea of how everything works.
+In particular, the `egs/fisher_english/s5` and `egs/voxforge/gst_demo`.
+If it's all very confusing, don't worry as the next post will go more in depth
+with using Kaldi and look at the `gst-kaldi-nnet2-online` plugin,
+a plugin to use neural nets with kaldi.

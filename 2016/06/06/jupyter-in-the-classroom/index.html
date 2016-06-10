@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+  <meta property="og:title" content=" Jupyter in the classroom &middot;  Joshua Milas" />
+  
+  <meta property="og:site_name" content="Joshua Milas" />
+  <meta property="og:url" content="https://deephorizons.github.io/2016/06/06/jupyter-in-the-classroom/" />
+  
+  
+  <meta property="og:type" content="article" />
+  
+  <meta property="og:article:published_time" content="2016-06-06T22:50:29-04:00" />
+  
+  <meta property="og:article:tag" content="jupyter" />
+  
+  
+
+  <title>
+     Jupyter in the classroom &middot;  Joshua Milas
+  </title>
+
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/main.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="https://deephorizons.github.io/css/github.css" />
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400" type="text/css">
+  <link rel="shortcut icon" href="https://deephorizons.github.io/images/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://deephorizons.github.io/images/apple-touch-icon.png" />
+  
+</head>
+<body>
+    <header class="global-header"  style="background-image:url( /images/bg.jpg )">
+    <section class="header-text">
+      <h1><a href="https://deephorizons.github.io/">Joshua Milas</a></h1>
+      
+      <div class="sns-links hidden-print">
+  <a style="width: 75px;" href="https://deephorizons.github.io/about">About</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://github.com/DeepHorizons" target="_blank">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+  <a href="https://linkedin.com/in/joshuamilas" target="_blank">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+</div>
+
+      
+      <a href="https://deephorizons.github.io/" class="btn-header btn-back hidden-xs">
+        <i class="fa fa-angle-left" aria-hidden="true"></i>
+        &nbsp;Home
+      </a>
+      
+      
+    </section>
+  </header>
+  <main class="container">
+
+
+<article>
+  <header>
+    <h1 class="text-primary">Jupyter in the classroom</h1>
+    <div class="post-meta clearfix">
+      <div class="post-date pull-left">
+        Posted on
+        <time datetime="2016-06-06T22:50:29-04:00">
+          Jun 6, 2016
+        </time>
+      </div>
+      <div class="pull-right">
+        
+        <span class="post-tag small"><a href="https://deephorizons.github.io//tags/jupyter">#jupyter</a></span>
+        
+      </div>
+    </div>
+  </header>
+  <section>
+    
+
+<p>Earlier this year I learned about <a href="https://jupyter.org">Jupyter</a>,
+a web based &lsquo;notebook&rsquo; editor that allows for both documentation and code.
+I soon found
+<a href="https://developer.rackspace.com/blog/deploying-jupyterhub-for-education/">Jessica Hamrick&rsquo;s post on rackspace</a>
+describing her usage of Jupyter for a class she taught.
+This is what sparked my research into it,
+and my journey to attempt to incorporate it into the
+Computer Engineering Curiculum at RIT.</p>
+
+<h1 id="background:2c2d9417caacf30ec48e6775db67b5c1">Background</h1>
+
+<p>I never liked doing programing on paper.
+There is a certain benefit in being able to work out a problem without your
+favorite editor,
+but in the academic setting it&rsquo;s less of programming and more of
+&lsquo;can you express this idea in a very specific way?&rsquo;.
+I always slogged through programing assignments that needed to be handed in,
+just to be told that I missed a semi-colon
+or that my curly brackets didn&rsquo;t look right.
+There have been two attempts made at RIT to allow students to submit code over
+the Internet, <code>try</code> and MyCourses.
+<code>try</code> has the problem of being super particular to the output of your submitted
+program that even an extra space might give you a failing mark.
+MyCourses was never made for programming, so submitting assignments is just a
+matter of zipping up your assignment and hoping the grader has a similar
+environment.</p>
+
+<h1 id="jupyter-in-the-classroom:2c2d9417caacf30ec48e6775db67b5c1">Jupyter in the classroom</h1>
+
+<p>Thats where Jupyter comes in.
+Notebooks are supposed to be portable, made to be shared among people.
+<a href="https://github.com/jupyterhub/jupyterhub">JupyterHub</a>
+allows Jupyter to be run on a central server, removing setup from the end user
+and giving everyone access to the same environment.
+You are guaranteed that if it runs for you, it will run for everyone else too.
+There is also <a href="https://github.com/jupyter/nbgrader">nbgrader</a>,
+which allows teachers to create assignments, distribute them to students,
+and collect them.
+It also has autograding features, but unlike <code>try</code> the students
+have access to the tests.</p>
+
+<p>I felt Jupyter was a good tool to use.
+It easily integrates the documentation and code,
+enabling a step by step process that is somewhat impractical in
+traditional reports.
+The documentation is easily written in markdown,
+and the document can be downloaded as a LaTex formatted document.
+This enables people to use Jupyter even if the class isn&rsquo;t
+using it specifically.
+Notebooks are also interactive, showing the results right then and there.
+Teachers could use notebooks to show live examples in class,
+rather than show code in a presentation and talk about it.
+Jupyter also supports many languages,
+well beyond the original language of Python.
+In particular it supports MATLAB, a language used extensively by engineers
+and in many classes.</p>
+
+<p>With this information, I wanted to see if it could actually work for a class
+that was not designed to use it.
+My objectives were to:</p>
+
+<ol>
+<li>Find out if Jupyter was flexible enough to adapt to classes not even aware
+of its existence</li>
+<li>Find out if it was intuitive enough for students to use</li>
+<li>Explore nbgrader and other plugins to enable teachers to use
+Jupyter for assignments</li>
+</ol>
+
+<p>To test my theory on its benefits of it in the academic environment,
+last semester I worked with a teacher and attempted to do every
+assignment, project, and homework in the class in Jupyter.
+It was a Digital Signal Processing class.
+The assignment and projects were done in MATLAB,
+with a few homework problems from the book.</p>
+
+<h1 id="setup:2c2d9417caacf30ec48e6775db67b5c1">Setup</h1>
+
+<p>I was able to request a server from my department with
+the specification that I needed.
+I decided to run JupyterHub in a Linux container using LXD so that I could take
+snapshots and restore them in the event something went wrong.
+I used NGINX to proxy all web requests to the container.
+I also used NGINX to enable HTTPS (Rather than do it on Jupyters end)
+JupyterHub defaults to use Linux user accounts for authentication,
+which was fine in this case.</p>
+
+<p>It just so happened that there is a
+<a href="https://github.com/calysto/matlab_kernel">MATLAB kernel</a> for Jupyter.
+I didn&rsquo;t really want to deal with licensing,
+so I rewrote the assignments as I got them to work with
+<a href="https://www.gnu.org/software/octave/">Octave</a>,
+an open source alternative to MATLAB.
+There also happened to be an
+<a href="https://github.com/calysto/octave_kernel">Octave kernel</a> which is what I used.
+When I installed Octave, I also installed all of its libraries as well.</p>
+
+<p>Our class also use a library produced by the book author named <code>spfirst</code>.
+This library was made for MATLAB and did not work with Octave.
+I ported this library to work with both,
+available <a href="https://github.com/DeepHorizons/spfirst">here</a>.</p>
+
+<p>Since my spelling is atrocious, I also decided to install a spell checker.
+<a href="https://bitbucket.org/ipre/calico">Calico</a> is the one I used.<br />
+(<code>NOTE:</code> Their website is down, the following steps can be taken to install it</p>
+
+<pre><code>jupyter nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
+jupyter nbextension enable calico-spell-check
+</code></pre>
+
+<p>There is also <a href="https://github.com/Calysto/notebook-extensions">https://github.com/Calysto/notebook-extensions</a> which hosts some
+other extensions.)</p>
+
+<p>Lastly, I installed pandoc and LaTeX so that the notebooks could be downloaded
+as PDFs.
+LaTex and all of its packages were installed to ensure compatibility.</p>
+
+<h1 id="results:2c2d9417caacf30ec48e6775db67b5c1">Results</h1>
+
+<p>The test was mostly successful.
+Out of the two projects, I did the first 100% in Jupyter.
+The second could have been done in Jupyter,
+but would involve downloading, many file uploads, and playing audio,
+things that Jupyter isn&rsquo;t good at yet.
+All but one assignment was done in Jupyter.
+The one that wasn&rsquo;t needed a specific MATLAB tool
+that is not available in Octave.
+Homework was practical to do in Jupyter until graphs and charts had to be drawn.</p>
+
+<p>It was very nice being able to include graphs and plots so easily.
+I could execute a small piece of code, explain it, then execute some more.
+The document flow was unlike a traditional report where the code is in
+the appendix, being explained earlier in the paper.
+The reports I made did not distinguish the sections between design and results.
+A teacher may not like this combination, but it is very well possible to
+make this distinction, I just felt it worked better in this way.</p>
+
+<p>As for my objectives:</p>
+
+<ol>
+<li>Find out if Jupyter was flexible enough to adapt to classes not even aware
+of its existence
+
+<ul>
+<li>Jupyter is definitely flexible enough to be used for nearly any class that
+has a coding requirement. I even used it for assignments in other classes
+that didnt have coding because it was easier to write in markdown than
+in LaTex.</li>
+<li>Some special care must be taken to assure that any report made meets the
+departments requirements for a standard lab report.</li>
+</ul></li>
+<li>Find out if it was intuitive enough for students to use
+
+<ul>
+<li>I believe that Jupyter is intuitive enough for the average student.
+I had some other students try it out, once they got past the initial
+questions, they were able to pick it right up.</li>
+<li>Downloading files is interesting. A file that Jupyter can open must be
+downloaded using <code>File-&gt;Download</code> rather than right clicking and
+downloading. All other files are downloaded by right clicking and
+downloading. This may be unintuitive and cause some problems.</li>
+<li>You cannot play sounds through a notebook. This was quite critical
+in this class. The workaround was to have the notebook generate a sound
+file, and then access it via the browser and play it.
+This is not ideal and this should be investigated to find a better solution.</li>
+</ul></li>
+<li>Explore nbgrader and other plugins to enable teachers to use
+Jupyter for assignments
+
+<ul>
+<li>Currently there is no web UI for interfacing with nbgrader,
+everything must be done via the command line.
+This is inconvenient for teachers who are not familiar with Linux.
+In my testing I made a few helper scripts but that can only go so far.</li>
+<li>The autograding feature works by having a box for implementation,
+then several tests. If the tests fail, then the points are not awarded.
+But the tests are always visible to the students.
+This disallows usages where you would not want teh student to see the tests
+line in a simple question you would see from other web based quizes.</li>
+</ul></li>
+</ol>
+
+<h1 id="next-steps:2c2d9417caacf30ec48e6775db67b5c1">Next Steps</h1>
+
+<p>The next steps is to move my single user instance and allow the department
+to use it.
+This means using a different authentication method other than the user accounts.
+Our school uses Shibboleth as its primary authentication system.
+Apache has a <code>mod_shib</code> plugin that would allow a near drop in.
+There is then a
+<a href="https://github.com/cwaldbieser/jhub_remote_user_authenticator">JupyterHub authenticator</a>
+than can use the data to handle the rest.
+(More can be read <a href="https://github.com/jupyterhub/jupyterhub/issues/332">here</a>)</p>
+
+<p>Another point is security and files.
+No student should be able to see or access another students files.
+This can be accomplished by using Docker and containers.
+Docker can be used to spin up the instance of Jupyter for each student.
+Their files can then be linked using NFS or Samba.
+This also helps with distribution, as one server can only handle about 30
+students from what I have read.</p>
+
+<p>The other two steps are student adoption and professor adoption.
+For this to be successful, the end goal is to have students use this to
+make their lives easier.
+If the students do not use it, then there is no point.
+I believe that some students will gravitate twards using this.
+It is simple enough to get started and has a lot of potential for helping.
+Once students begin to use it,
+professors could then start to use it for their class.
+It could start with them giving in class examples, making notebooks available
+for the students to look at.
+Once professors are comfortable with Jupyter, they may then begin using it
+for assignment.</p>
+
+<p>The targeted classes in my department are the Digital Signal Processing,
+Assembly, and Applied Programming (which uses C).
+Octave is already supported by Jupyer and there is a kernel for running
+C/C++.
+At the time there is no assembly interpreter for ARM
+which is what the class uses.
+I am current writing an interpreter to be used in the class with hopes of
+releasing a beta in a few weeks.</p>
+
+  </section>
+  <footer>
+    
+    <section class="author-info row">
+      <div class="author-avatar col-md-2">
+        
+      </div>
+      <div class="author-meta col-md-6">
+        
+        
+      </div>
+      
+    </section>
+    <ul class="pager">
+      
+      <li class="previous"><a href="https://deephorizons.github.io/2016/02/20/building-kaldi-on-windows-part-1/"><span aria-hidden="true">&larr;</span> Older</a></li>
+      
+      
+      <li class="next disabled"><a href="#">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      
+    </ul>
+  </footer>
+</article>
+
+  </main>
+  <footer class="container global-footer">
+    <div class="copyright-note pull-left">
+      
+    </div>
+    <div class="sns-links hidden-print">
+  <a style="width: 75px;" href="https://deephorizons.github.io/about">About</a>
+  
+  
+  
+  
+  
+  
+  
+  <a href="https://github.com/DeepHorizons" target="_blank">
+    <i class="fa fa-github"></i>
+  </a>
+  
+  
+  
+  <a href="https://linkedin.com/in/joshuamilas" target="_blank">
+    <i class="fa fa-linkedin"></i>
+  </a>
+  
+  
+</div>
+
+  </footer>
+
+  <script src="https://deephorizons.github.io/js/highlight.pack.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+  
+  
+  
+  
+  <script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({
+		tex2jax: {
+		  inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+		  processEscapes: true
+		}
+	  });
+  </script>
+  
+  <script type="text/javascript"
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+  
+</body>
+</html>
+

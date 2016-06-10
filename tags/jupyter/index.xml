@@ -10,21 +10,23 @@
     <atom:link href="https://DeepHorizons.github.io/tags/jupyter/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Introduction to the ARM interpreter</title>
-      <link>https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/</link>
+      <title>Jupyter in the classroom</title>
+      <link>https://deephorizons.github.io/2016/06/06/jupyter-in-the-classroom/</link>
       <pubDate>Mon, 06 Jun 2016 22:50:29 -0400</pubDate>
       
-      <guid>https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/</guid>
+      <guid>https://deephorizons.github.io/2016/06/06/jupyter-in-the-classroom/</guid>
       <description>
 
 &lt;p&gt;Earlier this year I learned about &lt;a href=&#34;https://jupyter.org&#34;&gt;Jupyter&lt;/a&gt;,
 a web based &amp;lsquo;notebook&amp;rsquo; editor that allows for both documentation and code.
-It seemed like a neat idea, but I just glazed over it.
-It wasn&amp;rsquo;t until I read
+I soon found
 &lt;a href=&#34;https://developer.rackspace.com/blog/deploying-jupyterhub-for-education/&#34;&gt;Jessica Hamrick&amp;rsquo;s post on rackspace&lt;/a&gt;
-that I began to see the potential for such a tool.&lt;/p&gt;
+describing her usage of Jupyter for a class she taught.
+This is what sparked my research into it,
+and my journey to attempt to incorporate it into the
+Computer Engineering Curiculum at RIT.&lt;/p&gt;
 
-&lt;h1 id=&#34;background:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Background&lt;/h1&gt;
+&lt;h1 id=&#34;background:2c2d9417caacf30ec48e6775db67b5c1&#34;&gt;Background&lt;/h1&gt;
 
 &lt;p&gt;I never liked doing programing on paper.
 There is a certain benefit in being able to work out a problem without your
@@ -33,59 +35,211 @@ but in the academic setting it&amp;rsquo;s less of programming and more of
 &amp;lsquo;can you express this idea in a very specific way?&amp;rsquo;.
 I always slogged through programing assignments that needed to be handed in,
 just to be told that I missed a semi-colon
-or that my curly brackets aren&amp;rsquo;t right.
-There have been attempts made at my school to allow students to submit code
-over the internet but the tool is either super particular to the output
-of your submitted program, or you simply zip up the code and hope the grader
-has a similar environment to you.&lt;/p&gt;
+or that my curly brackets didn&amp;rsquo;t look right.
+There have been two attempts made at RIT to allow students to submit code over
+the Internet, &lt;code&gt;try&lt;/code&gt; and MyCourses.
+&lt;code&gt;try&lt;/code&gt; has the problem of being super particular to the output of your submitted
+program that even an extra space might give you a failing mark.
+MyCourses was never made for programming, so submitting assignments is just a
+matter of zipping up your assignment and hoping the grader has a similar
+environment.&lt;/p&gt;
 
-&lt;h2 id=&#34;jupyter-in-the-classroom:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Jupyter in the classroom&lt;/h2&gt;
+&lt;h1 id=&#34;jupyter-in-the-classroom:2c2d9417caacf30ec48e6775db67b5c1&#34;&gt;Jupyter in the classroom&lt;/h1&gt;
 
 &lt;p&gt;Thats where Jupyter comes in.
 Notebooks are supposed to be portable, made to be shared among people.
 &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub&#34;&gt;JupyterHub&lt;/a&gt;
-allows Jupyter to be run on a central server,
-giving everyone access to the same environment.
+allows Jupyter to be run on a central server, removing setup from the end user
+and giving everyone access to the same environment.
 You are guaranteed that if it runs for you, it will run for everyone else too.
 There is also &lt;a href=&#34;https://github.com/jupyter/nbgrader&#34;&gt;nbgrader&lt;/a&gt;,
 which allows teachers to create assignments, distribute them to students,
 and collect them.
-It also has autograding features, but unlike the other tools the students
+It also has autograding features, but unlike &lt;code&gt;try&lt;/code&gt; the students
 have access to the tests.&lt;/p&gt;
 
+&lt;p&gt;I felt Jupyter was a good tool to use.
+It easily integrates the documentation and code,
+enabling a step by step process that is somewhat impractical in
+traditional reports.
+The documentation is easily written in markdown,
+and the document can be downloaded as a LaTex formatted document.
+This enables people to use Jupyter even if the class isn&amp;rsquo;t
+using it specifically.
+Notebooks are also interactive, showing the results right then and there.
+Teachers could use notebooks to show live examples in class,
+rather than show code in a presentation and talk about it.
+Jupyter also supports many languages,
+well beyond the original language of Python.
+In particular it supports MATLAB, a language used extensively by engineers
+and in many classes.&lt;/p&gt;
+
+&lt;p&gt;With this information, I wanted to see if it could actually work for a class
+that was not designed to use it.
+My objectives were to:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Find out if Jupyter was flexible enough to adapt to classes not even aware
+of its existence&lt;/li&gt;
+&lt;li&gt;Find out if it was intuitive enough for students to use&lt;/li&gt;
+&lt;li&gt;Explore nbgrader and other plugins to enable teachers to use
+Jupyter for assignments&lt;/li&gt;
+&lt;/ol&gt;
+
 &lt;p&gt;To test my theory on its benefits of it in the academic environment,
-I worked with a teacher and attempted to do every
-assignment in the class in Jupyter.
-I requested a server from our department,
-Installed Jupyter and the appropriate software and away I went.
-It was a Digial Signal Processing class with assignments and projects.
+last semester I worked with a teacher and attempted to do every
+assignment, project, and homework in the class in Jupyter.
+It was a Digital Signal Processing class.
 The assignment and projects were done in MATLAB,
-with a few problems from the book.
-It just so happened that there is a
+with a few homework problems from the book.&lt;/p&gt;
+
+&lt;h1 id=&#34;setup:2c2d9417caacf30ec48e6775db67b5c1&#34;&gt;Setup&lt;/h1&gt;
+
+&lt;p&gt;I was able to request a server from my department with
+the specification that I needed.
+I decided to run JupyterHub in a Linux container using LXD so that I could take
+snapshots and restore them in the event something went wrong.
+I used NGINX to proxy all web requests to the container.
+I also used NGINX to enable HTTPS (Rather than do it on Jupyters end)
+JupyterHub defaults to use Linux user accounts for authentication,
+which was fine in this case.&lt;/p&gt;
+
+&lt;p&gt;It just so happened that there is a
 &lt;a href=&#34;https://github.com/calysto/matlab_kernel&#34;&gt;MATLAB kernel&lt;/a&gt; for Jupyter.
 I didn&amp;rsquo;t really want to deal with licensing,
-so I rewrote the assignment to work with
+so I rewrote the assignments as I got them to work with
 &lt;a href=&#34;https://www.gnu.org/software/octave/&#34;&gt;Octave&lt;/a&gt;,
 an open source alternative to MATLAB.
 There also happened to be an
-&lt;a href=&#34;https://github.com/calysto/octave_kernel&#34;&gt;Octave kernel&lt;/a&gt; which is what I used.&lt;/p&gt;
+&lt;a href=&#34;https://github.com/calysto/octave_kernel&#34;&gt;Octave kernel&lt;/a&gt; which is what I used.
+When I installed Octave, I also installed all of its libraries as well.&lt;/p&gt;
 
-&lt;h2 id=&#34;results:fd1b137c8bb4656a20b3b51b9888debb&#34;&gt;Results&lt;/h2&gt;
+&lt;p&gt;Our class also use a library produced by the book author named &lt;code&gt;spfirst&lt;/code&gt;.
+This library was made for MATLAB and did not work with Octave.
+I ported this library to work with both,
+available &lt;a href=&#34;https://github.com/DeepHorizons/spfirst&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The test was mostly successful with some hidden benefits.
-Out of the two assignments, I did the first 100% in Jupyter.
+&lt;p&gt;Since my spelling is atrocious, I also decided to install a spell checker.
+&lt;a href=&#34;https://bitbucket.org/ipre/calico&#34;&gt;Calico&lt;/a&gt; is the one I used.&lt;br /&gt;
+(&lt;code&gt;NOTE:&lt;/code&gt; Their website is down, the following steps can be taken to install it&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;jupyter nbextension install https://bitbucket.org/ipre/calico/downloads/calico-spell-check-1.0.zip
+jupyter nbextension enable calico-spell-check
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;There is also &lt;a href=&#34;https://github.com/Calysto/notebook-extensions&#34;&gt;https://github.com/Calysto/notebook-extensions&lt;/a&gt; which hosts some
+other extensions.)&lt;/p&gt;
+
+&lt;p&gt;Lastly, I installed pandoc and LaTeX so that the notebooks could be downloaded
+as PDFs.
+LaTex and all of its packages were installed to ensure compatibility.&lt;/p&gt;
+
+&lt;h1 id=&#34;results:2c2d9417caacf30ec48e6775db67b5c1&#34;&gt;Results&lt;/h1&gt;
+
+&lt;p&gt;The test was mostly successful.
+Out of the two projects, I did the first 100% in Jupyter.
 The second could have been done in Jupyter,
-but would involve downloading many file transfers and playing audio,
-something that Jupyter isn&amp;rsquo;t good at yet.
+but would involve downloading, many file uploads, and playing audio,
+things that Jupyter isn&amp;rsquo;t good at yet.
 All but one assignment was done in Jupyter.
 The one that wasn&amp;rsquo;t needed a specific MATLAB tool
 that is not available in Octave.
-Homework was practical until graphs and charts were needed.&lt;/p&gt;
+Homework was practical to do in Jupyter until graphs and charts had to be drawn.&lt;/p&gt;
 
-&lt;p&gt;One extra benefit I looked over was the ability to download the assignment
-in a $ \LaTeX $ style formatted PDF.
-This is particularly useful for classes that wont be using Jupyter
-to do assignments, but students still want to use it.&lt;/p&gt;
+&lt;p&gt;It was very nice being able to include graphs and plots so easily.
+I could execute a small piece of code, explain it, then execute some more.
+The document flow was unlike a traditional report where the code is in
+the appendix, being explained earlier in the paper.
+The reports I made did not distinguish the sections between design and results.
+A teacher may not like this combination, but it is very well possible to
+make this distinction, I just felt it worked better in this way.&lt;/p&gt;
+
+&lt;p&gt;As for my objectives:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Find out if Jupyter was flexible enough to adapt to classes not even aware
+of its existence
+
+&lt;ul&gt;
+&lt;li&gt;Jupyter is definitely flexible enough to be used for nearly any class that
+has a coding requirement. I even used it for assignments in other classes
+that didnt have coding because it was easier to write in markdown than
+in LaTex.&lt;/li&gt;
+&lt;li&gt;Some special care must be taken to assure that any report made meets the
+departments requirements for a standard lab report.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Find out if it was intuitive enough for students to use
+
+&lt;ul&gt;
+&lt;li&gt;I believe that Jupyter is intuitive enough for the average student.
+I had some other students try it out, once they got past the initial
+questions, they were able to pick it right up.&lt;/li&gt;
+&lt;li&gt;Downloading files is interesting. A file that Jupyter can open must be
+downloaded using &lt;code&gt;File-&amp;gt;Download&lt;/code&gt; rather than right clicking and
+downloading. All other files are downloaded by right clicking and
+downloading. This may be unintuitive and cause some problems.&lt;/li&gt;
+&lt;li&gt;You cannot play sounds through a notebook. This was quite critical
+in this class. The workaround was to have the notebook generate a sound
+file, and then access it via the browser and play it.
+This is not ideal and this should be investigated to find a better solution.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Explore nbgrader and other plugins to enable teachers to use
+Jupyter for assignments
+
+&lt;ul&gt;
+&lt;li&gt;Currently there is no web UI for interfacing with nbgrader,
+everything must be done via the command line.
+This is inconvenient for teachers who are not familiar with Linux.
+In my testing I made a few helper scripts but that can only go so far.&lt;/li&gt;
+&lt;li&gt;The autograding feature works by having a box for implementation,
+then several tests. If the tests fail, then the points are not awarded.
+But the tests are always visible to the students.
+This disallows usages where you would not want teh student to see the tests
+line in a simple question you would see from other web based quizes.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;next-steps:2c2d9417caacf30ec48e6775db67b5c1&#34;&gt;Next Steps&lt;/h1&gt;
+
+&lt;p&gt;The next steps is to move my single user instance and allow the department
+to use it.
+This means using a different authentication method other than the user accounts.
+Our school uses Shibboleth as its primary authentication system.
+Apache has a &lt;code&gt;mod_shib&lt;/code&gt; plugin that would allow a near drop in.
+There is then a
+&lt;a href=&#34;https://github.com/cwaldbieser/jhub_remote_user_authenticator&#34;&gt;JupyterHub authenticator&lt;/a&gt;
+than can use the data to handle the rest.
+(More can be read &lt;a href=&#34;https://github.com/jupyterhub/jupyterhub/issues/332&#34;&gt;here&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;Another point is security and files.
+No student should be able to see or access another students files.
+This can be accomplished by using Docker and containers.
+Docker can be used to spin up the instance of Jupyter for each student.
+Their files can then be linked using NFS or Samba.
+This also helps with distribution, as one server can only handle about 30
+students from what I have read.&lt;/p&gt;
+
+&lt;p&gt;The other two steps are student adoption and professor adoption.
+For this to be successful, the end goal is to have students use this to
+make their lives easier.
+If the students do not use it, then there is no point.
+I believe that some students will gravitate twards using this.
+It is simple enough to get started and has a lot of potential for helping.
+Once students begin to use it,
+professors could then start to use it for their class.
+It could start with them giving in class examples, making notebooks available
+for the students to look at.
+Once professors are comfortable with Jupyter, they may then begin using it
+for assignment.&lt;/p&gt;
+
+&lt;p&gt;The targeted classes in my department are the Digital Signal Processing,
+Assembly, and Applied Programming (which uses C).
+Octave is already supported by Jupyer and there is a kernel for running
+C/C++.
+At the time there is no assembly interpreter for ARM
+which is what the class uses.
+I am current writing an interpreter to be used in the class with hopes of
+releasing a beta in a few weeks.&lt;/p&gt;
 </description>
     </item>
     

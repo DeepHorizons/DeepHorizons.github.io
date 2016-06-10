@@ -87,6 +87,10 @@
 
 <p>This is a multi part series about building Kaldi on Windows with Microsoft Visual Studio 2015</p>
 
+<p>UPDATE:
+I have submitted pull requests to update the build process for MSVS2015
+and it is now in the <code>master</code> branch.</p>
+
 <h1 id="speech-recognition:008c93024a31de39f86ab9e8c9e70af4">Speech Recognition</h1>
 
 <p>Like others, I have always been interested in adding speech recognition to my projects.
@@ -262,6 +266,16 @@ of Kaldi.
 A few projects will have failed, in particular the <code>online</code> projects.
 These projects rely on <a href="http://www.portaudio.com/">PortAudio</a></p>
 
+<p>At this point, you should have all of the binaries for Kaldi.
+As you might see, Kaldi is not just one binary, but a collection.
+The <code>egs</code> folder contains &lsquo;recipes&rsquo;, or collections of scripts use to train
+and test those models.
+Look at those to get an idea of how everything works.
+In particular, the <code>egs/fisher_english/s5</code> and <code>egs/voxforge/gst_demo</code>.
+If it&rsquo;s all very confusing, don&rsquo;t worry as the next post will go more in depth
+with using Kaldi and look at the <code>gst-kaldi-nnet2-online</code> plugin,
+a plugin to use neural nets with kaldi.</p>
+
   </section>
   <footer>
     
@@ -280,7 +294,7 @@ These projects rely on <a href="http://www.portaudio.com/">PortAudio</a></p>
       <li class="previous"><a href="https://deephorizons.github.io/about/"><span aria-hidden="true">&larr;</span> Older</a></li>
       
       
-      <li class="next"><a href="https://deephorizons.github.io/2016/06/06/introduction-to-the-arm-interpreter/">Newer <span aria-hidden="true">&rarr;</span></a></li>
+      <li class="next"><a href="https://deephorizons.github.io/2016/06/06/jupyter-in-the-classroom/">Newer <span aria-hidden="true">&rarr;</span></a></li>
       
     </ul>
   </footer>

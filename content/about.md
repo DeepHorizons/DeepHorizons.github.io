@@ -1,8 +1,11 @@
 +++
 date = "2016-02-20T10:35:26-05:00"
-draft = true
-title = "about"
+title = "About"
 
 +++
 
-This is about me!
+Hello! I'm Joshua Milas, a Computer Engineering student at
+Rochester Institute of Technology.
+
+I enjoy programming, solving problems, and exploring new technologies,
+with the interest of furthering my knowledge.
